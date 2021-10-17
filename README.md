@@ -5,7 +5,6 @@ Search and find university names around the world.
 - [Installation](#installation)
 - [Structure](#structure)
   - [API](#api)
-  - [Assets](#assets)
   - [Services](#services)
   - [Components](#components)
   - [App](#app)
