@@ -1,0 +1,121 @@
+:root {
+  --black: black;
+  --white: white;
+  --blue: #3740FF;
+  --gray: #606060;
+  --dark-gray: #4e4d4d;
+  --light-gray: rgb(233, 233, 233);
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+button,
+input,
+dl,
+hr,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: inherit;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--blue);
+}
+
+input {
+  padding: 8px 16px;
+  background: var(--white);
+  border: 1px solid var(--black);
+  width: 100%;
+  font-size: 100%;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+
+.search-container {
+  width: 80%;
+  background: var(--light-gray);
+  padding: 8px 8px;
+  margin-top: 24px;
+  height: fit-content;
+}
+
+.search-results {
+  border: 1px solid var(--black);
+  margin-top: 4px;
+  max-height: 120px;
+  background: var(--white);
+  list-style: none;
+  overflow-y: scroll;
+}
+
+.search-results li {
+  padding: 8px 16px;
+  color: var(--black);
+}
+
+.search-results li:focus-visible {
+  outline: 2px solid var(--blue);
+}
+
+.search-results-equal {
+  font-weight: 900;
+  font-size: 18px;
+}
+
+.search-history {
+  padding: 8px 16px;
+}
+
+.search-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 16px;
+  margin-top: 16px;
+  border-bottom: 1px solid var(--gray);
+}
+
+.search-history-item {
+  border-bottom: 1px solid var(--gray);
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.search-history-date {
+  display: flex;
+  color: var(--dark-gray);
+  font-size: 14px;
+}
+
+.search-history-remove {
+  margin-left: 16px;
+}
