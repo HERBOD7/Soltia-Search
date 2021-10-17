@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+  # Soltia Universuty Search
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Search and find university names around the world.
+## Table of contents
+- [Installation](#installation)
+- [Structure](#structure)
+  - [API](#api)
+  - [Assets](#assets)
+  - [Services](#services)
+  - [Components](#components)
+  - [App](#app)
 
-## Available Scripts
+## Installation
 
-In the project directory, you can run:
+install project dependencies:
 
-### `yarn start`
+```bash
+yarn install
+```
+and run the below command to start the project on development mode:
 
-Runs the app in the development mode.\
+```bash
+yarn start
+```
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- The page will reload if you make edits.
+# Structure
 
-### `yarn test`
+### API:
+API includes functionality to call API.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+API documentation is available on [Github](https://github.com/Hipo/university-domains-list).
 
-### `yarn build`
+endpoint constant name base on functionality and it includes API route.
+> #### API usage:
+> import it as `$api` into your component and call method of it.
+> ```javascript
+> import $api from './api/index';
+>
+> $api.searchUniversity(word).then((res) => {
+>     ...
+> }
+> ```
+### Services:
+Services include a utility to use Axios and Rest API.
+it using `$api` to call Rest API methods.
+> #### sample http service usage:
+>```
+> $http.get(ENDPOINT(query-params));
+>```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Components:
+- It includes basic components and specific components.
+```
+src
+└── components
+     └── component-type
+             └── component-name.js
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### input:
+>include search input >component. it get function to submit search as prop.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### cards:
+>include components that are used as cards like search history cards and search results.
 
-### `yarn eject`
+>search history: show search history and get a list of history and function to remove history as a prop.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+>search results: show search results and get a list of search results and keywords that were searched.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## App:
+include application components and functions:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### search university:
+>call university search API, store search history, speech each keypress word and speech word that passes to the search API.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### remove search history:
+>it removes search history using splice. it gets `index` and `delete counter` and has `0` for `index` and `search history length` for delete counter as default value.
