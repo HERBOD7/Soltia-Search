@@ -8,6 +8,7 @@ Search and find university names around the world.
   - [Services](#services)
   - [Components](#components)
   - [App](#app)
+- [References](#references)
 
 ## Installation
 
@@ -77,3 +78,8 @@ include application components and functions:
 
 #### remove search history:
 >it removes search history using splice. it gets `index` and `delete counter` and has `0` for `index` and `search history length` for delete counter as default value.
+
+## References:
+Used accessibility references:
+- [fonts(webaim)](https://webaim.org/techniques/fonts/)
+- [tags, color and design(web.dev)](https://web.dev/accessible/#create-a-design-and-css-that-supports-users-with-different-needs)
