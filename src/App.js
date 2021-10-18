@@ -70,11 +70,9 @@ const App = () => {
   return (
     <div className="App">
       <main className="search-container">
-        <form role="search">
-          <SearchInput value={searchValue} submitSearch={searchUniversity}/>
-          {searchResult.length ? <SearchResult selectResult={selectSearchResult} results={searchResult} searchKeyword={searchItem.toLowerCase()} /> : ''}
-          <SearchHistory history={searchHistory} removeHistory={removeSearchHistory}/>
-        </form>
+        <SearchInput value={searchValue} submitSearch={searchUniversity}/>
+        {searchResult.length ? <SearchResult selectResult={selectSearchResult} results={searchResult} searchKeyword={searchItem.toLowerCase()} /> : ''}
+        <SearchHistory history={searchHistory} removeHistory={removeSearchHistory}/>
       </main>
     </div>
   );
