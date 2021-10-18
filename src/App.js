@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useState } from 'react';
 import $api from './api/index';
 import SearchInput from './components/input/SearchInput'
@@ -16,6 +17,10 @@ const App = () => {
     if (searchItem) {
       $api.searchUniversity(searchItem).then((results) => {
         setSearchResult(results);
+        if (!results.length) {
+          let notFoundText = `No university with ${searchItem} name was found`;
+          textToSpeech(notFoundText);
+        }
         setSearchHistory((prev) => ([
           ...prev,  
           {
@@ -35,15 +40,13 @@ const App = () => {
       return;
     }
     if (e.nativeEvent.data) {
-      speech.text = e.nativeEvent.data;
-      window.speechSynthesis.speak(speech);
+      textToSpeech(e.nativeEvent.data);
     }
     // eslint-disable-next-line no-unused-expressions
     searchTimeOut.current ? clearTimeout(searchTimeOut.current) : null;
     searchTimeOut.current = setTimeout(() => {
-      speech.text = e.target.value;
       setSearchItem(e.target.value);
-      window.speechSynthesis.speak(speech);
+      textToSpeech(e.target.value);
     }, 1500);
   };
 
@@ -56,7 +59,11 @@ const App = () => {
   const selectSearchResult = (searchResult) => {
     setSearchValue(searchResult);
     setSearchItem(searchResult);
-    speech.text = searchResult;
+    textToSpeech(searchResult);
+  }
+
+  const textToSpeech = (data) => {
+    speech.text = data;
     window.speechSynthesis.speak(speech);
   }
 
@@ -65,7 +72,7 @@ const App = () => {
       <main className="search-container">
         <form role="search">
           <SearchInput value={searchValue} submitSearch={searchUniversity}/>
-          {searchResult.length ? <SearchResult selectResult={selectSearchResult} results={searchResult} searchKeyword={searchItem} /> : ''}
+          {searchResult.length ? <SearchResult selectResult={selectSearchResult} results={searchResult} searchKeyword={searchItem.toLowerCase()} /> : ''}
           <SearchHistory history={searchHistory} removeHistory={removeSearchHistory}/>
         </form>
       </main>
