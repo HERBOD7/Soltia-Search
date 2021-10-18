@@ -83,3 +83,4 @@ include application components and functions:
 Used accessibility references:
 - [fonts(webaim)](https://webaim.org/techniques/fonts/)
 - [tags, color and design(web.dev)](https://web.dev/accessible/#create-a-design-and-css-that-supports-users-with-different-needs)
+- [keyboard accessibility(webaim)](https://webaim.org/techniques/keyboard/)
