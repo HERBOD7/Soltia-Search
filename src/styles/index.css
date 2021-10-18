@@ -81,7 +81,7 @@ input {
 }
 
 .search-results li:focus-visible {
-  outline: 2px solid var(--blue);
+  border: 2px solid var(--blue);
 }
 
 .search-results-equal {

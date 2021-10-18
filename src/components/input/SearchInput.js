@@ -1,8 +1,8 @@
 
-const SearchInput = ({submitSearch}) => {
+const SearchInput = ({submitSearch, value}) => {
     return (
         <label className="search">
-          <input onChange={(e) => submitSearch(e)} type="search" />
+          <input value={value} tabIndex="1" onChange={(e) => submitSearch(e)} type="search" />
         </label>
     )
 }
