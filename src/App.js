@@ -5,6 +5,7 @@ import SearchResult from './components/cards/SearchResult';
 import SearchHistory from './components/cards/SearchHistory';
 
 const App = () => {
+  const [searchValue, setSearchValue] = useState('');
   const [searchResult, setSearchResult] = useState([]);
   const [searchItem, setSearchItem] = useState('');
   const [searchHistory, setSearchHistory] = useState([]);
@@ -27,6 +28,7 @@ const App = () => {
   }, [searchItem])
 
   const searchUniversity = (e) => {
+    setSearchValue(e.target.value);
     if (!e.target.value.trim()) {
       setSearchItem('');
       setSearchResult([]);
@@ -51,12 +53,21 @@ const App = () => {
     setSearchHistory(history);
   }
 
+  const selectSearchResult = (searchResult) => {
+    setSearchValue(searchResult);
+    setSearchItem(searchResult);
+    speech.text = searchResult;
+    window.speechSynthesis.speak(speech);
+  }
+
   return (
     <div className="App">
       <main className="search-container">
-        <SearchInput submitSearch={searchUniversity}/>
-        {searchResult.length ? <SearchResult results={searchResult} searchKeyword={searchItem} /> : ''}
-        <SearchHistory history={searchHistory} removeHistory={removeSearchHistory}/>
+        <form role="search">
+          <SearchInput value={searchValue} submitSearch={searchUniversity}/>
+          {searchResult.length ? <SearchResult selectResult={selectSearchResult} results={searchResult} searchKeyword={searchItem} /> : ''}
+          <SearchHistory history={searchHistory} removeHistory={removeSearchHistory}/>
+        </form>
       </main>
     </div>
   );
